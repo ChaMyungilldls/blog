@@ -1,431 +1,402 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 성민네트웍스 SoftCRM 4.0 포럼개최</title>
+    <title>제미나이 AI 12개 엔진 비즈니스 활용 과정</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            scroll-behavior: smooth;
+            color: #333;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        .glossary-tooltip {
-            position: relative;
-            cursor: help;
-            border-bottom: 1px dotted #3b82f6;
-            color: #1e40af;
-            font-weight: 500;
-        }
-        .glossary-tooltip:hover::after {
-            content: attr(data-description);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px;
-            padding: 10px;
-            background-color: #1f2937;
-            color: white;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            z-index: 10;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: left;
-            line-height: 1.4;
-            margin-bottom: 5px;
-        }
-        /* Chat Widget Animation */
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .chat-slide-in {
-            animation: slideIn 0.3s ease-out forwards;
-        }
-        /* Loading Dot Animation */
-        .dot-flashing {
-            position: relative;
-            width: 6px;
-            height: 6px;
-            border-radius: 5px;
-            background-color: #9880ff;
-            color: #9880ff;
-            animation: dot-flashing 1s infinite linear alternate;
-            animation-delay: 0.5s;
-        }
-        .dot-flashing::before, .dot-flashing::after {
-            content: "";
-            display: inline-block;
-            position: absolute;
-            top: 0;
-        }
-        .dot-flashing::before {
-            left: -10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 5px;
-            background-color: #9880ff;
-            color: #9880ff;
-            animation: dot-flashing 1s infinite alternate;
-            animation-delay: 0s;
-        }
-        .dot-flashing::after {
-            left: 10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 5px;
-            background-color: #9880ff;
-            color: #9880ff;
-            animation: dot-flashing 1s infinite alternate;
-            animation-delay: 1s;
-        }
-        @keyframes dot-flashing {
-            0% { background-color: #9880ff; }
-            50%, 100% { background-color: #ebe6ff; }
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50">
 
-    <!-- 내비게이션 -->
-    <nav class="fixed w-full bg-white shadow-md z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <span class="text-2xl font-bold text-blue-900">Sungmin Networks</span>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-bold text-xl tracking-tight text-slate-800">Gemini CEO 마스터</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-blue-900 transition font-medium">행사 개요</a>
-                    <a href="#topics" class="text-gray-600 hover:text-blue-900 transition font-medium">사전의견제출</a>
-                    <a href="#agenda" class="text-gray-600 hover:text-blue-900 transition font-medium">프로그램</a>
-                    <a href="#register" class="bg-blue-900 text-white px-6 py-2 rounded-md hover:bg-blue-800 transition font-medium">사전 등록</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#intro" class="text-slate-600 hover:text-blue-600 font-medium">과정 소개</a>
+                    <a href="#curriculum" class="text-slate-600 hover:text-blue-600 font-medium">커리큘럼</a>
+                    <a href="#reference" class="text-slate-600 hover:text-blue-600 font-medium">용어 및 출처</a>
                 </div>
-                <!-- 모바일 메뉴 버튼 -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <i class="fas fa-bars fa-lg"></i>
-                    </button>
+                <div>
+                    <a href="#apply" class="bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 shadow-sm">수강신청</a>
                 </div>
             </div>
-        </div>
-        <!-- 모바일 메뉴 -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <a href="#about" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">행사 개요</a>
-            <a href="#topics" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">사전의견제출</a>
-            <a href="#agenda" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">프로그램</a>
-            <a href="#register" class="block px-4 py-3 bg-blue-50 text-blue-900 font-bold">의견제출</a>
         </div>
     </nav>
 
-    <!-- 히어로 섹션 -->
-    <header class="hero-bg h-screen flex items-center justify-center text-center px-4 relative">
-        <div class="max-w-4xl mx-auto text-white">
-            <p class="text-blue-400 font-bold tracking-widest mb-4 uppercase">Innovation & Connectivity</p>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">2026 성민네트웍스<br> SoftCRM 4.0 포럼개최</h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                2026 차세대 SoftCRM 4.0 업데이트에 대한 미래를 조망하고, 기존 CRM 개선방향에 대한 여러분의 소중한 의견과 정보를 공유하고자 합니다.
+    <!-- Hero Section -->
+    <section class="hero-bg text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-blue-400 font-semibold tracking-wide uppercase mb-3">4050 중소기업 대표이사를 위한 특별 과정</h2>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                대표님의 경쟁사는 이미 AI로<br>
+                <span class="gradient-text">마케팅 비용을 절반</span>으로 줄이고 있습니다.
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                제미나이(Gemini) AI 12개 엔진을 활용하여 마케팅 콘텐츠 자체 생산, 문서 작성 자동화, 데이터 기반 의사결정 시스템을 12주 만에 구축하십시오.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#topics" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg text-lg">
-                    사전 의견제출하기
+                <a href="#apply" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-lg border border-transparent">
+                    지금 바로 신청하기
                 </a>
-                <a href="#agenda" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition text-lg">
-                    프로그램 보기
+                <a href="#curriculum" class="bg-transparent hover:bg-slate-800 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 border border-slate-500">
+                    커리큘럼 확인
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- 행사 개요 -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Intro Section -->
+    <section id="intro" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">행사 개요</h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">왜 경영자가 직접 AI를 배워야 할까요?</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="far fa-calendar-alt text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">일시</h3>
-                    <p class="text-gray-600">2026년 1월 28일 (수)</p>
-                    <p class="text-gray-500 text-sm mt-1">09:30 - 11:00</p>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">1</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">신속한 의사결정</h3>
+                    <p class="text-slate-600 leading-relaxed">실무자나 외부 용역을 거치지 않고, 최고 의사결정권자가 직접 데이터를 분석하고 전략적 기획안을 즉시 도출할 수 있습니다.</p>
                 </div>
-                
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-map-marker-alt text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">장소</h3>
-                    <p class="text-gray-600">성민네트웍스 회의실 </p>
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">2</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">획기적인 비용 절감</h3>
+                    <p class="text-slate-600 leading-relaxed">마케팅 시안 제작, 카피라이팅, 번역, 제안서 작성 등 기존에 외주로 처리하던 업무를 AI 시스템으로 내재화합니다.</p>
                 </div>
-
-                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-users text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">대상</h3>
-                    <p class="text-gray-600"> 기술연구소, 솔루션사업부, 사업개발부 </p>
-                    <p class="text-gray-500 text-sm mt-1"> SoftCRM 개발자, AS응대자, 영업관리자 </p>
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">3</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">디지털 리더십 확립</h3>
+                    <p class="text-slate-600 leading-relaxed">대표가 먼저 AI 활용의 모범을 보임으로써, 조직 전체에 혁신의 메시지를 전달하고 스마트한 업무 문화를 정착시킵니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 사전의견 제출하기 (기술 용어 설명 포함) -->
-    <section id="topics" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">사전의견 제출하기</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">
-                    이번 포럼에서는 SoftCRM 4.0업데이트에 대한 여러분의 의견과 경험을 심도있게 다룰 예정입니다. 포럼전에 여러분의 의견을 사전에 작성 요청드립니다.   <br>
-                    <span class="text-sm text-gray-500">*파란색 점선 밑줄이 있는 용어에 마우스를 올리면 상세 설명을 확인할 수 있습니다.</span>
-                </p>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">12주 실전 비즈니스 커리큘럼</h2>
+                <p class="text-slate-600">이론 20%, 실전 실습 80% 비율로 매주 1개의 실무 프로젝트를 완성합니다.</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-6 rounded"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 주제 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-900 relative group">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
-                        <span class="glossary-tooltip" data-description="윈도우즈 네이티브 앱 기반의 안과 성형외 치과에 최적화된 CRM 솔루션">SoftCRM 4.0</span> 고도화 전략
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        현재 SoftCRM 3.0, 3.5의 문제점, 부족한 사례와 내용을 찾아내고 개선할 방안에 대해 적어주세요.
-                    </p>
-                    <button onclick="window.location.href='https://www.notion.so/2e6ded3126fd80b8896cdef2fe7ae77c?source=copy_link'" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-magic mr-2"></i>바로 작성하기
-                    </button>
-                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+            <!-- Phase 1 -->
+            <div class="mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 px-6 py-4">
+                    <h3 class="text-xl font-bold text-white">1단계: 마케팅 콘텐츠 및 기획력 10배 끌어올리기</h3>
+                    <p class="text-slate-300 text-sm mt-1">제미나이 핵심 도구를 활용하여 외주에 의존하던 업무를 직접 통제합니다.</p>
                 </div>
-
-                <!-- 주제 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-700 relative group">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
-                        <span class="glossary-tooltip" data-description="프로그램 AS발생건수 줄이기, 이용문의 줄이기, 카카오알림톡 설정 셀프설치하기..">AS문의</span> 단순응대 줄이기
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        반복적이고 단순한 응대업무 개선하기에 대한 여러분의 의견을 적어주세요.
-                    </p>
-                    <button onclick="window.location.href='https://www.notion.so/AS-2e6ded3126fd80a98a4cd1954ba6b956?source=copy_link'" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-magic mr-2"></i>바로 작성하기
-                    </button>
-                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+                <div class="p-6">
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">1주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">제미나이 기본 배우기</h4>
+                                <p class="text-slate-600 mt-1">제미나이 프롬프트 입력방법, RGC 문법, 반복 빌드업 실습</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">2주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">나노바나나 2를 활용한 시각화 홍보물</h4>
+                                <p class="text-slate-600 mt-1">텍스트를 고품질 이미지로 변환, SNS 광고 소재 제작, 기존 회사 로고/제품 이미지 합성 기법</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">3주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">비즈니스 캔버스로 사업계획서 기획</h4>
+                                <p class="text-slate-600 mt-1">랜딩페이지 기획안 및 카피라이팅 실시간 공동 작성, 문서 톤앤매너 수정 및 버전 관리</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">4주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">나만의 24시간 마케팅/고객센터 비서, Gems 구축</h4>
+                                <p class="text-slate-600 mt-1">자사 제품 정보와 CS 매뉴얼을 학습한 맞춤형 챗봇(Gems) 세팅 및 실무자 배포용 비서 제작</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
-                <!-- 주제 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-500 relative group">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
-                        <span class="glossary-tooltip" data-description="기존에 없던 새로운 기능추가, AI접목, 타프로그램 벤치마킹 기능">신규기능</span> 프로그램 추가
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        온프레미스(사내 구축형) 환경에서 클라우드로의 안정적인 마이그레이션 전략과 신규 새로운 서비스 구축등 다양한 서비스를 제안
-                    </p>
-                    <button onclick="window.location.href='https://www.notion.so/2e6ded3126fd8037813edd78cb021ecd?source=copy_link'" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-magic mr-2"></i>바로 작성하기
-                    </button>
-                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+            <!-- Phase 2 -->
+            <div class="mb-12 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 px-6 py-4">
+                    <h3 class="text-xl font-bold text-white">2단계: 구글 워크스페이스 기반 경영 속도 혁신</h3>
+                    <p class="text-slate-300 text-sm mt-1">일상적인 서류 작업과 커뮤니케이션 시간을 단축하여 핵심 업무에 집중합니다.</p>
                 </div>
+                <div class="p-6">
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">5주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">이메일 마케팅 및 자동화 (Gmail)</h4>
+                                <p class="text-slate-600 mt-1">콜드메일(신규 영업) 초안 자동 생성, 수백 통의 업무 메일 요약 및 중요도 분류 시스템 구축</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">6주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">압도적인 제안서 자동 생성 (Google Docs)</h4>
+                                <p class="text-slate-600 mt-1">기존 데이터를 바탕으로 신규 클라이언트 맞춤형 제안서 생성, 다국어 비즈니스 전문 번역 적용</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">7주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">데이터 기반 마케팅 성과 분석 (Google Sheets)</h4>
+                                <p class="text-slate-600 mt-1">함수 없이 자연어로 매출 트렌드 분석, 캠페인 결과 시각화 차트 생성 및 예산 분배 시나리오 도출</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">8주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">투자자 설득을 위한 시각적 발표 (Slides & Meet)</h4>
+                                <p class="text-slate-600 mt-1">사업계획서의 자동 슬라이드 변환, 화상 회의 시 실시간 회의록 작성 및 핵심 액션 아이템 추출</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                <!-- 주제 4 -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-300 relative group">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
-                       다양한 의견청취
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        SoftCRM4.0과 관련하여 여러분의 다양한 의견을 작성하여 주세요. 영업, 마케팅, 추진방향 등...
-                    </p>
-                    <button onclick="window.location.href='https://www.notion.so/2e6ded3126fd803bb2d9d52db9a8bb6e?source=copy_link'" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-magic mr-2"></i>바로 작성하기
-                    </button>
-                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+            <!-- Phase 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="bg-slate-800 px-6 py-4">
+                    <h3 class="text-xl font-bold text-white">3단계: 기업 지식 자산화 및 서비스 고도화</h3>
+                    <p class="text-slate-300 text-sm mt-1">사내 데이터와 AI를 결합하여 고도화된 비즈니스 시스템을 완성합니다.</p>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">9주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">사내 전용 AI 지식 저장소 구축 (NotebookLM)</h4>
+                                <p class="text-slate-600 mt-1">수년간 쌓인 제안서, 매뉴얼 등을 AI에 학습시켜 방대한 자료 중 필요한 정보만 즉시 추출</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">10주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">경쟁사 및 시장 트렌드 딥 리서치 (Deep Research)</h4>
+                                <p class="text-slate-600 mt-1">실시간 웹 정보 및 산업 리포트를 종합 분석하여 신사업 진출 전 여론 및 리스크 사전 감지</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">11주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">스마트폰으로 지휘하는 현장 경영 (멀티모달)</h4>
+                                <p class="text-slate-600 mt-1">현장 사진 기반 개선점 도출, 이동 중 음성(Gemini Live)을 통한 업무 지시 및 아이디어 텍스트화</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-16 text-center border-r border-slate-200 pr-4">
+                                <span class="block text-sm font-bold text-blue-600">12주차</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-lg">자사 맞춤형 AI 업무 파이프라인 완성 및 발표</h4>
+                                <p class="text-slate-600 mt-1">자사 전용 프로세스 기획 및 발표, 현업 적용 시 발생하는 트러블슈팅 및 1:1 맞춤 컨설팅</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 프로그램 일정 -->
-    <section id="agenda" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">프로그램 일정</h2>
-                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
-            </div>
-
-            <div class="space-y-6">
-                <!-- 세션 아이템 -->
-                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
-                    <div class="md:w-1/4 mb-2 md:mb-0">
-                        <span class="text-blue-900 font-bold text-lg">09:30 - 09:40</span>
-                    </div>
-                    <div class="md:w-3/4">
-                        <h4 class="font-bold text-lg text-gray-900">포럼의 필요성 및 아젠더 설명</h4>
-                        <p class="text-gray-500">차명일 대표</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
-                    <div class="md:w-1/4 mb-2 md:mb-0">
-                        <span class="text-blue-900 font-bold text-lg">09:40 - 10:40</span>
-                    </div>
-                    <div class="md:w-3/4">
-                        <div class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-2">Keynote</div>
-                        <h4 class="font-bold text-lg text-gray-900">사전작성 내용 요약 발표 및 설명</h4>
-                        <p class="text-gray-500">작성자 각 5~10분씩 발표진행</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
-                    <div class="md:w-1/4 mb-2 md:mb-0">
-                        <span class="text-blue-900 font-bold text-lg">10:40 - 11:00</span>
-                    </div>
-                    <div class="md:w-3/4">
-                        <div class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mb-2">Session 1</div>
-                        <h4 class="font-bold text-lg text-gray-900">성공적인 SoftCRM 4.0 구축 핵심 요소</h4>
-                        <p class="text-gray-500">핵심요소 결정하기 자유토론</p>
-                    </div>
-                </div>
-               
-                <div class="flex flex-col md:flex-row pb-6">
-                    <div class="md:w-1/4 mb-2 md:mb-0">
-                        <span class="text-blue-900 font-bold text-lg">11:00</span>
-                    </div>
-                    <div class="md:w-3/4">
-                        <h4 class="font-bold text-lg text-gray-900">경품 증정 및 폐회</h4>
-                        <p class="text-gray-500">우수 토론 참석자 경품증정 및 폐회</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 사전 등록 -->
-<section id="register" class="py-20 bg-blue-900 text-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-4">포럼참석 사전등록신청</h2>
-            <p class="text-blue-200">참석시 원하시는 스타벅스 음료 메뉴를 같이 신청해주세요.</p>
-        </div>
-
-        <form id="registrationForm" class="bg-white rounded-lg p-8 text-gray-800 shadow-2xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label class="block text-sm font-bold mb-2" for="name">성함</label>
-                    <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="text" id="name" name="name" placeholder="홍길동" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-2" for="company">스타벅스 음료메뉴</label>
-                    <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="text" id="company" name="company" placeholder="아메리카노" required>
-                </div>
-            </div>
+    <!-- Reference and Terminology Section -->
+    <section id="reference" class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-blue-600 pl-4">사전 지식 및 용어 안내</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label class="block text-sm font-bold mb-2" for="email">이메일</label>
-                    <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="email" id="email" name="email" placeholder="example@company.com" required>
+            <div class="grid md:grid-cols-2 gap-8 mb-10">
+                <!-- Terminology -->
+                <div class="bg-slate-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800">전문 용어 해설</h3>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li><strong class="text-slate-800">프롬프트 엔지니어링:</strong> AI에게 원하는 결과를 정확히 얻어내기 위해 질문이나 지시어(프롬프트)를 최적화하여 설계하는 기술입니다.</li>
+                        <li><strong class="text-slate-800">RGC 문법:</strong> AI에게 지시를 내릴 때 역할(Role), 목표(Goal), 배경 상황(Context)을 명확히 구조화하여 입력함으로써 답변의 정확도를 높이는 실전 프롬프트 작성 기법입니다.</li>
+                        <li><strong class="text-slate-800">나노바나나 2:</strong> 제미나이 환경에서 제공되는 최신 고품질 이미지 생성 및 편집 특화 모델입니다.</li>
+                        <li><strong class="text-slate-800">Gems (젬스):</strong> 특정 역할(예: 마케팅 기획자)이나 문서를 기반으로 사용자 맞춤형 답변을 하도록 설정된 전용 챗봇입니다.</li>
+                        <li><strong class="text-slate-800">멀티모달 (Multimodal):</strong> 텍스트, 이미지, 음성, 영상 등 다양한 형태의 정보를 동시에 인지하고 분석하는 AI 기술입니다.</li>
+                        <li><strong class="text-slate-800">콜드메일 (Cold Mail):</strong> 일면식이 없는 잠재 고객 기업에게 영업 및 제휴를 목적으로 보내는 첫 홍보 이메일입니다.</li>
+                    </ul>
                 </div>
-                <div>
-                    <label class="block text-sm font-bold mb-2" for="phone">연락처</label>
-                    <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+
+                <!-- References -->
+                <div class="bg-slate-50 p-6 rounded-xl">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800">신뢰할 수 있는 교육 근거</h3>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li>
+                            <strong class="text-slate-800">Google Workspace 공식 보안 가이드:</strong> 
+                            본 교육은 기업 내부 데이터의 외부 유출을 방지하기 위한 Google의 'Enterprise Data Privacy' 규정을 준수하며 진행됩니다.
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">Gemini 3.1 Flash/Pro 기술 명세서:</strong>
+                            최신 구글 딥마인드 발표 자료에 기반하여 딥 리서치 및 캔버스 기능의 한계점과 정확한 활용법을 교육합니다.
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">NotebookLM 아키텍처 공식 문서:</strong>
+                            할루시네이션(환각 현상)을 최소화하기 위한 출처 표기(Citation) 시스템과 기업용 보안 설정법을 철저히 검증하여 전달합니다.
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="mb-8">
-                <label class="block text-sm font-bold mb-2" for="position">직책</label>
-                <select class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" id="position" name="position">
-                    <option value="">선택해주세요</option>
-                    <option value="executive">임원 (C-Level)</option>
-                    <option value="manager">부서장/관리자</option>
-                    <option value="staff">실무자</option>
-                    <option value="other">기타</option>
-                </select>
-            </div>
-
-            <div class="mb-8">
-                <label class="flex items-start">
-                    <input type="checkbox" class="mt-1 mr-3" required>
-                    <span class="text-sm text-gray-600">개인정보 수집 및 이용에 동의합니다.</span>
-                </label>
-            </div>
-
-            <button type="submit" id="submitBtn" class="w-full bg-blue-900 text-white font-bold py-4 rounded hover:bg-blue-800 transition shadow-lg flex justify-center items-center">
-                <span>등록하기</span>
-                <svg id="loadingSpinner" class="hidden animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-            </button>
-        </form>
-    </div>
-</section>
-
-<script>
-    const form = document.getElementById('registrationForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const spinner = document.getElementById('loadingSpinner');
-    const btnText = submitBtn.querySelector('span');
-
-    // ★★★ 중요: 아래 주소를 1단계에서 만든 구글 앱스 스크립트 URL로 교체하세요 ★★★
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbydMHzmT4slJFcu1SilA__0_ol3anspi-TVlATTR_Acgdhk-lqymUVIdXKkTUTF4qZ6ug/exec';
-
-    form.addEventListener('submit', e => {
-        e.preventDefault(); // 페이지 새로고침 방지
-
-        // 로딩 상태 표시
-        submitBtn.disabled = true;
-        btnText.textContent = '등록 중...';
-        spinner.classList.remove('hidden');
-
-        // 데이터 전송
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                alert('사전등록이 성공적으로 완료되었습니다!');
-                form.reset(); // 입력창 초기화
-                
-                // 버튼 상태 복구
-                submitBtn.disabled = false;
-                btnText.textContent = '등록하기';
-                spinner.classList.add('hidden');
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert('오류가 발생했습니다. 다시 시도해주세요.');
-                
-                // 버튼 상태 복구
-                submitBtn.disabled = false;
-                btnText.textContent = '등록하기';
-                spinner.classList.add('hidden');
-            });
-    });
-</script>
-    
-    <!-- 푸터 -->
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0 text-center md:text-left">
-                <h3 class="text-white text-xl font-bold mb-2">Sungmin Networks</h3>
-                <p class="text-sm"> 서울시 구로구 디지털로243 813호 </p>
-                <p class="text-sm mt-1">문의: cha@talkcrm24.com | 02-362-4680</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin fa-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-youtube fa-lg"></i></a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-gray-600">
-            &copy; 2026 Sungmin Networks. All rights reserved.
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="apply" class="py-20 px-4 sm:px-6 lg:px-8 hero-bg relative">
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div class="px-8 py-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-3">교육 수강 신청</h2>
+                    <p class="text-slate-600">아래 폼을 작성해주시면, 담당자가 확인 후 24시간 이내에 개별 연락을 드립니다.</p>
+                    <div class="mt-6 inline-block bg-blue-50 border border-blue-100 rounded-xl px-8 py-4">
+                        <span class="block text-sm font-bold text-blue-600 mb-1">참가 비용 (12주 전체 과정)</span>
+                        <span class="text-3xl font-extrabold text-slate-900">100,000<span class="text-xl font-medium text-slate-600 ml-1">원</span></span>
+                    </div>
+                </div>
+
+                <form id="application-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-slate-700 mb-1">회사명 *</label>
+                            <input type="text" id="company" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="(주)가나다">
+                        </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">성함 / 직급 *</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="홍길동 대표이사">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">이메일 *</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="ceo@company.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">연락처 *</label>
+                            <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="010-0000-0000">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-slate-700 mb-1">가장 해결하고 싶은 회사의 문제 (선택)</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="예: 신규 고객 확보를 위한 마케팅 비용이 너무 많이 듭니다. 제안서 작성 시간을 단축하고 싶습니다."></textarea>
+                    </div>
+
+                    <div class="flex items-start mb-6">
+                        <div class="flex items-center h-5">
+                            <input id="privacy" type="checkbox" required class="w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500">
+                        </div>
+                        <label for="privacy" class="ml-2 text-sm text-slate-600">
+                            개인정보 수집 및 이용에 동의합니다. (수집된 정보는 과정 안내 목적으로만 사용됩니다)
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition duration-300 shadow-lg">
+                        신청서 제출하기
+                    </button>
+                </form>
+            </div>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p class="mb-2">© 2026 Gemini AI CEO Masterclass. All rights reserved.</p>
+        <p class="text-sm">본 교육 과정은 기술의 발전 상황에 따라 일부 커리큘럼이 최적화될 수 있습니다.</p>
     </footer>
 
-  
+    <!-- Success Modal Box -->
+    <div id="message-modal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 justify-center items-center px-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center transform transition-all">
+            <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">신청 완료</h3>
+            <p class="text-slate-600 mb-6">정상적으로 접수되었습니다.<br>담당자가 곧 연락드리겠습니다.</p>
+            <button id="close-modal-btn" class="w-full bg-slate-800 text-white font-bold py-3 px-4 rounded-lg hover:bg-slate-700 transition duration-300">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('application-form');
+            const modal = document.getElementById('message-modal');
+            const closeBtn = document.getElementById('close-modal-btn');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent actual form submission for demo
+                
+                // Show modal
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                
+                // Reset form
+                form.reset();
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if(e.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
